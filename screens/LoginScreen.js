@@ -35,7 +35,7 @@ export default function LoginScreen({ navigation }) {
     Keyboard.dismiss();
     try {
       const response = await axios.post(
-        "http://222.114.27.89:8080/member/login",
+        "http://3.39.230.106:8080/member/login",
         {
           phoneNumber,
           password: pwd,

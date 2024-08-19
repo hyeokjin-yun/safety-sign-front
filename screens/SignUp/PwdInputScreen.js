@@ -80,7 +80,7 @@ export default function PwdInputScreen({ navigation }) {
       if (submit) {
         try {
           const response = await axios.post(
-            "http://222.114.27.89:8080/member/signUp",
+            "http://3.39.230.106:8080/member/signUp",
             { ...state, password: pwd }
           );
           console.log("Server response:", response.data);
