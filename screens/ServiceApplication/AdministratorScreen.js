@@ -11,23 +11,23 @@ import {
 import { useFocusEffect } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Icon from "react-native-vector-icons/Ionicons";
+import Postcode from "@actbase/react-daum-postcode";
 import { ServiceApplicationContext } from "../../context/ServiceApplicationContext.js";
 import TitleBar from "../../components/TitleBar";
 import BackButton from "../../components/BackButton";
 import CloseButton from "../../components/CloseButton.js";
 import { styles } from "../../styles/ServiceApplicationStyles";
 import { globalStyles } from "../../styles/GlobalStyles.js";
-import Postcode from "@actbase/react-daum-postcode";
 
-export default function SignCategoryScreen({ navigation }) {
+export default function AdministratorScreen({ navigation }) {
   const { dispatch } = useContext(ServiceApplicationContext);
   const [administratorName, setAdministratorName] = useState("");
   const [administratorPhone, setAdministratorPhone] = useState("");
   const [administratorAddress1, setAdministratorAddress1] = useState("");
   const [administratorAddress2, setAdministratorAddress2] = useState("");
   const [addtionalInfo, setAddtionalInfo] = useState("");
+  const [modal, setModal] = useState(false);
   const [isValid, setIsValid] = useState(false);
-  const [isModal, setModal] = useState(false);
 
   const validateForm = () => {
     //추후 수정 필요
@@ -65,12 +65,11 @@ export default function SignCategoryScreen({ navigation }) {
   };
 
   const handleAdministratorAddress2Change = (text) => {
-    const filteredText = text.replace(/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣\s]/g, "");
-    setAdministratorAddress2(filteredText);
+    setAdministratorAddress2(text);
     dispatch({
       type: "SET_FIELD",
       field: "administrator_address",
-      value: administratorAddress1 + " " + filteredText,
+      value: `${administratorAddress1} ${text}`,
     });
   };
 
@@ -195,7 +194,7 @@ export default function SignCategoryScreen({ navigation }) {
           <Text style={globalStyles.wideButtonText}>다음</Text>
         </TouchableOpacity>
 
-        <Modal visible={isModal}>
+        <Modal visible={modal}>
           <TitleBar>
             <View style={globalStyles.emptyView}></View>
             <Text style={globalStyles.ScreenTitle}>주소 검색</Text>

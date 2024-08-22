@@ -10,7 +10,7 @@ import CloseButton from "../../components/CloseButton.js";
 import { styles } from "../../styles/ServiceApplicationStyles.js";
 import { globalStyles } from "../../styles/GlobalStyles.js";
 
-export default function SignCategoryScreen({ navigation }) {
+export default function SignInfoScreen1({ navigation }) {
   const { dispatch } = useContext(ServiceApplicationContext);
   const [displayPeriodStart, setDisplayPeriodStart] = useState(null);
   const [displayPeriodEnd, setDisplayPeriodEnd] = useState(null);
@@ -30,8 +30,8 @@ export default function SignCategoryScreen({ navigation }) {
 
   const formatDate = (date) => {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
 
@@ -40,34 +40,126 @@ export default function SignCategoryScreen({ navigation }) {
 
     if (selectedDate === "displayStart") {
       setDisplayPeriodStart((prevDisplayPeriodStart) => {
-        if (displayPeriodEnd && new Date(formattedDate) > new Date(displayPeriodEnd)) {
+        if (
+          displayPeriodEnd &&
+          new Date(formattedDate) > new Date(displayPeriodEnd)
+        ) {
           setDisplayPeriodEnd(formattedDate);
+
+          dispatch({
+            type: "SET_FIELD",
+            field: "display_period_end",
+            value: formattedDate,
+          });
+
+          dispatch({
+            type: "SET_FIELD",
+            field: "display_period_start",
+            value: displayPeriodEnd,
+          });
+
           return displayPeriodEnd;
         }
+
+        dispatch({
+          type: "SET_FIELD",
+          field: "display_period_start",
+          value: formattedDate,
+        });
+
         return formattedDate;
       });
     } else if (selectedDate === "displayEnd") {
       setDisplayPeriodEnd((prevDisplayPeriodEnd) => {
-        if (displayPeriodStart && new Date(formattedDate) < new Date(displayPeriodStart)) {
+        if (
+          displayPeriodStart &&
+          new Date(formattedDate) < new Date(displayPeriodStart)
+        ) {
           setDisplayPeriodStart(formattedDate);
+
+          dispatch({
+            type: "SET_FIELD",
+            field: "display_period_start",
+            value: formattedDate,
+          });
+
+          dispatch({
+            type: "SET_FIELD",
+            field: "display_period_end",
+            value: displayPeriodStart,
+          });
+
           return displayPeriodStart;
         }
+
+        dispatch({
+          type: "SET_FIELD",
+          field: "display_period_end",
+          value: formattedDate,
+        });
+
         return formattedDate;
       });
     } else if (selectedDate === "constructionStart") {
       setConstructionPeriodStart((prevConstructionPeriodStart) => {
-        if (constructionPeriodEnd && new Date(formattedDate) > new Date(constructionPeriodEnd)) {
+        if (
+          constructionPeriodEnd &&
+          new Date(formattedDate) > new Date(constructionPeriodEnd)
+        ) {
           setConstructionPeriodEnd(formattedDate);
+
+          dispatch({
+            type: "SET_FIELD",
+            field: "construction_period_end",
+            value: formattedDate,
+          });
+
+          dispatch({
+            type: "SET_FIELD",
+            field: "construction_period_start",
+            value: constructionPeriodEnd,
+          });
+
           return constructionPeriodEnd;
         }
+
+        dispatch({
+          type: "SET_FIELD",
+          field: "construction_period_start",
+          value: formattedDate,
+        });
+
         return formattedDate;
       });
     } else if (selectedDate === "constructionEnd") {
       setConstructionPeriodEnd((prevConstructionPeriodEnd) => {
-        if (constructionPeriodStart && new Date(formattedDate) < new Date(constructionPeriodStart)) {
+        if (
+          constructionPeriodStart &&
+          new Date(formattedDate) < new Date(constructionPeriodStart)
+        ) {
           setConstructionPeriodStart(formattedDate);
+
+          dispatch({
+            type: "SET_FIELD",
+            field: "construction_period_start",
+            value: formattedDate,
+          });
+
+          dispatch({
+            type: "SET_FIELD",
+            field: "construction_period_end",
+            value: constructionPeriodStart,
+          });
+
           return constructionPeriodStart;
         }
+
+        dispatch({
+          type: "SET_FIELD",
+          field: "construction_period_end",
+          value: formattedDate,
+        });
+
         return formattedDate;
       });
     }
@@ -83,27 +175,6 @@ export default function SignCategoryScreen({ navigation }) {
   };
 
   useEffect(() => {
-    dispatch({
-      type: "SET_FIELD",
-      field: "display_period_start",
-      value: displayPeriodStart,
-    });
-    dispatch({
-      type: "SET_FIELD",
-      field: "display_period_end",
-      value: displayPeriodEnd,
-    });
-    dispatch({
-      type: "SET_FIELD",
-      field: "construction_period_start",
-      value: constructionPeriodStart,
-    });
-    dispatch({
-      type: "SET_FIELD",
-      field: "construction_period_end",
-      value: constructionPeriodEnd,
-    });
-
     validateForm();
   }, [
     displayPeriodStart,

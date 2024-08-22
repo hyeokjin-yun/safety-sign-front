@@ -5,8 +5,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 export default function CloseButton({ title, destination, navigation }) {
   const handlePress = () => {
     Alert.alert(
-      title + " 종료",
-      title + "을 종료하시겠습니까?",
+      `${title} 종료`,
+      `${title} 을 종료하시겠습니까?`,
       [
         {
           text: "예",

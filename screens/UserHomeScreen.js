@@ -8,7 +8,7 @@ export default function UserHomeScreen({ navigation }) {
   return (
     <View style={styles.userHomeScreen}>
       <TitleBar>
-        <Text style={styles.headerTitleText}>Safety Sign</Text>
+        <Text style={styles.headerTitleText}>간판지킴이</Text>
         <MypageButton />
       </TitleBar>
 

@@ -4,7 +4,7 @@ import { Text, View, StyleSheet } from "react-native";
 export default function MainLogo() {
   return (
     <View style={styles.mainLogo}>
-      <Text style={styles.title}>Safety Sign</Text>
+      <Text style={styles.title}>간판지킴이</Text>
       <Text style={styles.subTitle}>옥외광고물 설치 허가 대행 서비스</Text>
     </View>
   );

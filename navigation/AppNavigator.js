@@ -13,18 +13,18 @@ import SignCategoryScreen from "../screens/ServiceApplication/SignCategoryScreen
 import ConstructionCompanyScreen from "../screens/ServiceApplication/ConstructionCompanyScreen.js";
 import AdministratorScreen from "../screens/ServiceApplication/AdministratorScreen.js";
 import SignInfoScreen1 from "../screens/ServiceApplication/SignInfoScreen1.js";
-import SignInfoScreen2 from "../screens/ServiceApplication/SignInfoScreen2.js"
+import SignInfoScreen2 from "../screens/ServiceApplication/SignInfoScreen2.js";
+import SignInfoScreen3 from "../screens/ServiceApplication/SignInfoScreen3.js";
+import ConfirmScreen from "../screens/ServiceApplication/ConfirmScreen.js";
+import ConfirmLocalGovernmentScreen from "../screens/ServiceApplication/ConfirmLocalGovernmentScreen.js";
+import PaymentScreen from "../screens/ServiceApplication/PaymentScreen.js";
+import ApplicationDoneScreen from "../screens/ServiceApplication/ApplicationDoneScreen.js";
 
 const Stack = createStackNavigator();
 
 export default function AppNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="ServiceApplicationSignInfo2"
-        component={SignInfoScreen2}
-        options={{ headerShown: false, animationEnabled: false }}
-      />
       <Stack.Screen
         name="Home"
         component={HomeScreen}
@@ -85,9 +85,39 @@ export default function AppNavigator() {
         component={AdministratorScreen}
         options={{ headerShown: false, animationEnabled: false }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="ServiceApplicationSignInfo1"
         component={SignInfoScreen1}
+        options={{ headerShown: false, animationEnabled: false }}
+      />
+      <Stack.Screen
+        name="ServiceApplicationSignInfo2"
+        component={SignInfoScreen2}
+        options={{ headerShown: false, animationEnabled: false }}
+      />
+      <Stack.Screen
+        name="ServiceApplicationSignInfo3"
+        component={SignInfoScreen3}
+        options={{ headerShown: false, animationEnabled: false }}
+      />
+      <Stack.Screen
+        name="ServiceApplicationConfirm"
+        component={ConfirmScreen}
+        options={{ headerShown: false, animationEnabled: false }}
+      />
+      <Stack.Screen
+        name="ServiceApplicationConfirmLocalGovernment"
+        component={ConfirmLocalGovernmentScreen}
+        options={{ headerShown: false, animationEnabled: false }}
+      />
+      <Stack.Screen
+        name="ServiceApplicationPayment"
+        component={PaymentScreen}
+        options={{ headerShown: false, animationEnabled: false }}
+      />
+      <Stack.Screen
+        name="ServiceApplicationPaymentDone"
+        component={ApplicationDoneScreen}
         options={{ headerShown: false, animationEnabled: false }}
       />
     </Stack.Navigator>

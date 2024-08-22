@@ -16,7 +16,7 @@ import CloseButton from "../../components/CloseButton.js";
 import { styles } from "../../styles/ServiceApplicationStyles";
 import { globalStyles } from "../../styles/GlobalStyles.js";
 
-export default function SignCategoryScreen({ navigation }) {
+export default function ConstructionCompanyScreen({ navigation }) {
   const { dispatch } = useContext(ServiceApplicationContext);
   const [constructionCompanyName, setConstructionCompanyName] = useState("");
   const [representativeName, setRepresentativeName] = useState("");

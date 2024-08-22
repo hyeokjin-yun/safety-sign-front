@@ -59,7 +59,7 @@ export default function LoginScreen({ navigation }) {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.LoginScreen}>
           <View style={styles.LoginFormContainer}>
-            <Text style={styles.LoginTitle}>Safety Sign</Text>
+            <Text style={styles.LoginTitle}>간판지킴이</Text>
             <Text style={globalStyles.formTextInputTitle}>휴대폰 번호</Text>
             <TextInput
               style={[globalStyles.formTextInput, styles.formTextInput]}
